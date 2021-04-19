@@ -1,8 +1,26 @@
 # VP Mobile App
 
-使用flutter建置跨平台APP.
-整合GetX framework.
+嘗試使用flutter建置跨平台APP.
+
+狀態管理使用GetX framework.
+
 https://pub.dev/packages/get
+
+後端springboot 將轉換用dgs做GraphQL server
+
+https://netflix.github.io/dgs/
+
+客戶端使用GraphQL Flutter作為GraphQL client
+
+https://pub.dev/packages/graphql_flutter
+
+# 已開發模組:
+
+物料查詢,
+
+工單物料庫存查詢,
+
+
 
 ## Getting Started
 

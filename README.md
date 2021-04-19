@@ -1,6 +1,8 @@
-# demo_getx
+# VP Mobile App
 
-A new Flutter project.
+使用flutter建置跨平台APP.
+整合GetX framework.
+https://pub.dev/packages/get
 
 ## Getting Started
 

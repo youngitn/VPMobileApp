@@ -6,7 +6,9 @@
 
 https://pub.dev/packages/get
 
-後端springboot 將轉換用dgs做GraphQL server
+後端vp_backend springboot(https://github.com/youngitn/vp_backend)
+
+將轉換用dgs做GraphQL server
 
 https://netflix.github.io/dgs/
 

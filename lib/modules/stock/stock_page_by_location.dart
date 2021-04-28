@@ -5,15 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:json_table/json_table.dart';
 
+
 import 'stock_controller.dart';
 
-class StockPage extends GetView<StockController> {
+///顯示庫存資訊
+///過濾BY庫位查詢後的庫存資訊
+class StockPageByLocation extends GetView<StockController> {
 
   bool toggle = true;
 
   List<JsonTableColumn> columns = [
     JsonTableColumn("inag001", label: "料號"),
     JsonTableColumn("inag100", label: "庫位"),
+    JsonTableColumn("inag004", label: "庫位編號"),
     //JsonTableColumn("DOB", label: "Date of Birth", valueBuilder: formatDOB),
     // JsonTableColumn("age",
     // label: "Eligible to Vote", valueBuilder: eligibleToVote),
@@ -26,7 +30,7 @@ class StockPage extends GetView<StockController> {
 
 
     return Scaffold(
-      appBar: AppBar(title: Text('庫存查詢')),
+      appBar: AppBar(title: Text('庫存查詢X')),
       body: Container(
         padding: EdgeInsets.only(
           top: 20,
@@ -41,11 +45,11 @@ class StockPage extends GetView<StockController> {
                         controller.items.assignAll([]);
                         Get.snackbar('系統訊息', '料號不可為空');
                       }
-                      controller.getStockListByMaterial();
+                      controller.getStockListByMaterialAndLocation();
                     },
                     theFunctionOfAfterSanQRCode: () {
 
-                      controller.getStockListByMaterial();
+                      controller.getStockListByMaterialAndLocation();
                     },
                     textEditingController: controller.textController,
                     hintText: ' 請輸入料號',
@@ -55,7 +59,7 @@ class StockPage extends GetView<StockController> {
                         controller.items.assignAll([]);
                         Get.snackbar('系統訊息', '料號不可為空');
                       }
-                      controller.getStockListByMaterial();
+                      controller.getStockListByMaterialAndLocation();
                     },
                   ),
                   Expanded(
@@ -112,8 +116,7 @@ class StockPage extends GetView<StockController> {
           heroTag: "btnStock",
           child: Icon(Icons.grid_on),
           onPressed: () {
-            //測試暫存工具
-            //controller.setTest();
+            controller.setTest();
           }),
     );
   }
@@ -132,7 +135,7 @@ class Dialogx extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,

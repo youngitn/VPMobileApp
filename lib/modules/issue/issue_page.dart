@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:demo_getx/modules/stock/stock_controller.dart';
+import 'package:demo_getx/modules/stock/stock_page_by_location.dart';
 import 'package:demo_getx/modules/work_order/work_order_controller.dart';
 import 'package:demo_getx/widget/text_inpute_field.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
@@ -11,6 +12,8 @@ import 'package:json_table/json_table.dart';
 
 import 'issue_controller.dart';
 
+///發料作業
+///輸入工單號碼 將取得該工單中備料清單位於目前庫位的料
 @immutable
 // ignore: must_be_immutable
 class IssuePage extends GetView<IssueController> {
@@ -213,19 +216,21 @@ class IssuePage extends GetView<IssueController> {
                                   stockController.items.assignAll([]);
                                   Get.snackbar('系統訊息', '料號不可為空');
                                 }
-                                stockController.getStockListByMaterial();
+                                stockController.getStockListByMaterialAndLocation();
+                                Get.to(StockPageByLocation());
                               },
 
                               ///非同步會有時間差需使用async/await
                               theFunctionOfAfterSanQRCode: () {
-                                stockController.getStockListByMaterial();
+                                stockController.getStockListByMaterialAndLocation();
                               },
                               onPressed: () {
                                 if (controller.material.isEmpty) {
                                   stockController.items.assignAll([]);
                                   Get.snackbar('系統訊息', '料號不可為空');
                                 }
-                                stockController.getStockListByMaterial();
+                                stockController.getStockListByMaterialAndLocation();
+
                               },
                             ),
                           ),

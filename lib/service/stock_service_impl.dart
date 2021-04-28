@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 
 import 'package:common_utils/common_utils.dart';
 import 'package:demo_getx/data/model/stock.dart';
@@ -44,6 +44,29 @@ class StockServiceImpl extends GetxService implements StockService {
   }
 
   @override
+  Future<List> getStockListByMaterialWithLocation(String material
+      ,String location) async {
+    Logger.net(baseUrl + "getStock",
+        data: {"search": 'where:inag001@$material,and:inag008!=0,and:inag004@$location,'},
+        type: "http.get");
+    final response = await networkManager.fetch<StockByLocation, List<StockByLocation>>(
+        "getStock?search=where:inag001@$material,and:inag008!=0,and:inag004@$location,",
+        parseModel: StockByLocation(),
+        method: RequestType.GET);
+    Logger.endNet(
+      "ws/chat/getList",
+      data: response.data.toString(),
+    );
+
+    if (response.data is List) {
+      return response.data;
+      //jsonRes.value = jsonEncode(response.data);
+    }
+    return [];
+    //items.value = data.value.data;
+  }
+
+  @override
   String here() {
     return 'stock service here';
   }
@@ -54,6 +77,7 @@ class StockServiceImpl extends GetxService implements StockService {
     print('INIT STOCKSERVICE');
   }
 
+ ///查詢工單明細
   @override
   Future<List> getStockListByLocation(
       int ent, List workOrderNum, String location) async {
@@ -73,6 +97,7 @@ class StockServiceImpl extends GetxService implements StockService {
       data: response.data.toString(),
     );
     if (response.data is List) {
+      print('===========response.data is List==============');
       return response.data;
       //jsonRes.value = jsonEncode(response.data);
     }

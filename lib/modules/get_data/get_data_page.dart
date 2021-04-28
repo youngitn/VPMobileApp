@@ -14,20 +14,25 @@ class GetDataPage extends GetView<GetDataController> {
           backgroundColor: Colors.redAccent,
           icon: Icon(Icons.refresh),
           label: Text('重設庫位'),
-          heroTag: "btnsss",
+          heroTag: "btnsss",///巢狀嵌套時,如有相同元件如floatingActionButton,需指定heroTag做識別.
           onPressed: () {
             controller.cleanSharedPreferencesOfLocation();
           }),
 
       appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.home),
-            onPressed: () {
-              Get.offAllNamed(Routes.HOME);
-            },
-          ),
-          title: Obx(() => Text(
-              'Module1 ${controller.stockController.items.length} ${controller.workOrderController.items.length}'))),
+        leading: IconButton(
+          icon: Icon(Icons.home),
+          onPressed: () {
+            Get.offAllNamed(Routes.HOME);
+          },
+        ),
+        title: Obx(
+          () => Text(
+
+              ///要有使用某controller中的屬性或方法, 這樣Get.put(stockController)才會初始化
+              'Module1 ${controller.stockController.items.length} ${controller.workOrderController.items.length}'),
+        ),
+      ),
       endDrawer: Drawer(
         child: ListView(
           children: [
@@ -52,14 +57,14 @@ class GetDataPage extends GetView<GetDataController> {
             ),
             ListTile(
               leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
+              title: Text('功能1'),
               onTap: () {
                 Get.back();
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              title: Text('功能2'),
               onTap: () {
                 Get.back();
               },

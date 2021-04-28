@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
+///多工單查詢結果
 class StockByLocationPage extends GetView<StockByLocationController> {
   StockByLocationController controller = Get.put(StockByLocationController());
 
@@ -29,6 +30,8 @@ class StockByLocationPage extends GetView<StockByLocationController> {
                       '料號: ${controller.stockByLocationList()[index].sfba005}'),
                   Text(
                       '單位: ${controller.stockByLocationList()[index].sfba014}'),
+                  Text(
+                      '數量: ${controller.stockByLocationList()[index].inag008}'),
                   ListTile(
                     leading: IconButton(
                       icon: Icon(Icons.clear),

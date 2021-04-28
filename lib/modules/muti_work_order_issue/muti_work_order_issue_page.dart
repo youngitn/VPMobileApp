@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:demo_getx/config/client.dart';
+
 import 'package:demo_getx/data/todo_fetch.dart';
 import 'package:demo_getx/modules/qr_scaner/qr_scanner_controller.dart';
 import 'package:demo_getx/modules/stock/stock_by_location_page.dart';
@@ -8,6 +8,7 @@ import 'package:demo_getx/widget/text_inpute_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+
 import 'package:json_table/json_table.dart';
 
 import 'muti_work_order_issue_controller.dart';
@@ -30,13 +31,13 @@ class MutiWorkOrderIssuePage extends GetView<MutiWorkOrderIssueController> {
     // label: "Eligible to Vote", valueBuilder: eligibleToVote),
     //JsonTableColumn("xmdh017", label: "E-mail", defaultValue: "NA"),
   ];
-  String token =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ5b3VuZ3RpbjEwMTdAZ21haWwuY29tIiwibmFtZSI6InlvdW5ndGluMTAxNyIsImlhdCI6MTYxNzA4MzIzMS4xNDMsImlzcyI6Imh0dHBzOi8vaGFzdXJhLmlvL2xlYXJuLyIsImh0dHBzOi8vaGFzdXJhLmlvL2p3dC9jbGFpbXMiOnsieC1oYXN1cmEtYWxsb3dlZC1yb2xlcyI6WyJ1c2VyIl0sIngtaGFzdXJhLXVzZXItaWQiOiJ5b3VuZ3RpbjEwMTdAZ21haWwuY29tIiwieC1oYXN1cmEtZGVmYXVsdC1yb2xlIjoidXNlciIsIngtaGFzdXJhLXJvbGUiOiJ1c2VyIn0sImV4cCI6MTYxNzE2OTYzMX0.98gsF4L3J0JItyfrbgr-Di2Ubf8OIuEL7yzamUwSpBE";
+  // String token =
+  //     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ5b3VuZ3RpbjEwMTdAZ21haWwuY29tIiwibmFtZSI6InlvdW5ndGluMTAxNyIsImlhdCI6MTYxNzA4MzIzMS4xNDMsImlzcyI6Imh0dHBzOi8vaGFzdXJhLmlvL2xlYXJuLyIsImh0dHBzOi8vaGFzdXJhLmlvL2p3dC9jbGFpbXMiOnsieC1oYXN1cmEtYWxsb3dlZC1yb2xlcyI6WyJ1c2VyIl0sIngtaGFzdXJhLXVzZXItaWQiOiJ5b3VuZ3RpbjEwMTdAZ21haWwuY29tIiwieC1oYXN1cmEtZGVmYXVsdC1yb2xlIjoidXNlciIsIngtaGFzdXJhLXJvbGUiOiJ1c2VyIn0sImV4cCI6MTYxNzE2OTYzMX0.98gsF4L3J0JItyfrbgr-Di2Ubf8OIuEL7yzamUwSpBE";
 
   @override
   Widget build(BuildContext context) {
     return GraphQLProvider(
-      client: controller.initailizeClient(token),
+      client: controller.initailizeClient(''),
       child: CacheProvider(
         child: Scaffold(
           //floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
@@ -170,7 +171,7 @@ class MutiWorkOrderIssuePage extends GetView<MutiWorkOrderIssueController> {
                             builder: (QueryResult result,
                                 {VoidCallback refetch, FetchMore fetchMore}) {
                               print('builder*************');
-                              var refetchQuery = refetch;
+                              //var refetchQuery = refetch;
                               print(result.data);
                               if (result.hasException) {
                                 return Text(result.exception.toString());

@@ -15,9 +15,12 @@ class StockPageByLocation extends GetView<StockController> {
   bool toggle = true;
 
   List<JsonTableColumn> columns = [
-    JsonTableColumn("inag001", label: "料號"),
-    JsonTableColumn("inag100", label: "庫位"),
-    JsonTableColumn("inag004", label: "庫位編號"),
+    //JsonTableColumn("inag001", label: "料號"),
+    //JsonTableColumn("inag100", label: "庫位"),
+    //JsonTableColumn("inag004", label: "庫位編號"),
+    JsonTableColumn("inag008", label: "庫存數量"),
+    JsonTableColumn("inag007", label: "單位"),
+    JsonTableColumn("inag005", label: "儲位"),
     //JsonTableColumn("DOB", label: "Date of Birth", valueBuilder: formatDOB),
     // JsonTableColumn("age",
     // label: "Eligible to Vote", valueBuilder: eligibleToVote),
@@ -135,7 +138,7 @@ class Dialogx extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,

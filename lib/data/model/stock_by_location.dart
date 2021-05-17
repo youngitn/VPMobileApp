@@ -13,20 +13,23 @@ class StockByLocation extends INetworkModel<StockByLocation> {
   String sfba016;
   String sfba014;
   String inaa007;
+  String inag007;
 
-  StockByLocation(
-      {this.sfaadocno,
-      this.inag004,
-      this.inag005,
-      this.inag001,
-      this.inag008,
-      this.imaal003,
-      this.sfbaseq,
-      this.sfba005,
-      this.sfba013,
-      this.sfba016,
-      this.sfba014,
-      this.inaa007});
+  StockByLocation({
+    this.sfaadocno,
+    this.inag004,
+    this.inag005,
+    this.inag001,
+    this.inag008,
+    this.imaal003,
+    this.sfbaseq,
+    this.sfba005,
+    this.sfba013,
+    this.sfba016,
+    this.sfba014,
+    this.inaa007,
+    this.inag007,
+  });
 
   StockByLocation.fromJson(Map<String, dynamic> json) {
     sfaadocno = json['sfaadocno'];
@@ -42,6 +45,7 @@ class StockByLocation extends INetworkModel<StockByLocation> {
     sfba016 = json['sfba016'];
     sfba014 = json['sfba014'];
     inaa007 = json['inaa007'];
+    inag007 = json['inag007'];
   }
 
   Map<String, dynamic> toJson() {
@@ -59,6 +63,7 @@ class StockByLocation extends INetworkModel<StockByLocation> {
     data['sfba016'] = this.sfba016;
     data['sfba014'] = this.sfba014;
     data['inaa007'] = this.inaa007;
+    data['inag007'] = this.inag007;
 
     return data;
   }
